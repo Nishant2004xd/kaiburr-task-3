@@ -1,73 +1,71 @@
-# React + TypeScript + Vite
+# Kaiburr Assessment - Task 3: React WEB UI
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This repository contains the frontend application for the Kaiburr assessment, built using **React**, **TypeScript**, and **Ant Design**. This web UI provides a full-featured interface to create, search, delete, and execute tasks by communicating with the Java REST API built in Task 1.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Project Overview
 
-## React Compiler
+This application was bootstrapped using **Vite** with the **React + TypeScript** template. It uses **Axios** as the HTTP client to make all API requests to the backend.
 
-The React Compiler is currently not compatible with SWC. See [this issue](https://github.com/vitejs/vite-plugin-react/issues/428) for tracking the progress.
+The UI is built entirely with components from the **Ant Design** library, including `Layout`, `Table` (with expandable rows), `Modal` forms, `Buttons`, and `Collapse` panels to create a clean and functional user experience.
 
-## Expanding the ESLint configuration
+All application state, such as the list of tasks, is managed using React's `useState` hook. API calls are handled via `async/await` functions that update the state and provide user feedback (e.g., "Task created successfully!") using the Ant Design `message` component.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Key Features:
+* **Full CRUD:** The UI supports all required operations:
+    * **Create:** A modal form (`<Modal>` with `<Form>`) is used to create new tasks.
+    * **Read (All & Search):** The main table displays all tasks. A search modal filters tasks by name, and a "Show All Tasks" button resets the filter.
+    * **Delete:** A "Delete" button on each row removes the task from the database.
+* **Task Execution:** The "Execute" button runs the task on the backend.
+* **Execution History:** The table features expandable rows (`<Table expandable>`) that display the full execution history for each task, including the command output, start time, and end time.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### Backend Connection & CORS
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+The application is configured in `src/api.ts` to connect to the Task 1 Java backend at `http://localhost:8080`. For the frontend (running on `http://localhost:5173`) to communicate with the backend, a `WebConfig` file was added to the Java project to enable **CORS (Cross-Origin Resource Sharing)**.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+---
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## How to Run
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+1.  **Run the Backend:** Start your **Task 1 (Java) application** first.
+2.  **Install Dependencies:** Open a terminal in this project's root folder (`kaiburr-task-3`) and run:
+    ```bash
+    npm install
+    ```
+3.  **Run the App:** In the same terminal, run:
+    ```bash
+    npm run dev
+    ```
+4.  **Access:** Open your browser and navigate to `http://localhost:5173`.
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+---
+
+## Application Screenshots
+
+Here are the screenshots demonstrating the full functionality of the web UI.
+
+### 1. The "Create Task" Modal
+
+<img width="959" height="449" alt="task3-1" src="https://github.com/user-attachments/assets/0ae1d339-b284-4884-aab5-b55b132d6a2a" />
+
+### 2. Successful Task Creation
+
+<img width="959" height="449" alt="task3-2" src="https://github.com/user-attachments/assets/b6a3fee8-f36e-4982-927c-4405af7e6479" />
+
+### 3. Successful Task Execution & History
+
+<img width="959" height="449" alt="task3-3" src="https://github.com/user-attachments/assets/5c904f61-dc7e-4cca-b3b5-92e56294f473" />
+
+### 4. The "Search by Name" Modal
+
+<img width="959" height="449" alt="task3-4" src="https://github.com/user-attachments/assets/dd425d4d-19e1-45e9-9b4b-3b265ad2fdbb" />
+
+### 5. Successful Search Results
+
+<img width="959" height="449" alt="task3-5" src="https://github.com/user-attachments/assets/ba6c7554-c0ec-44bd-8b4d-1270ac6713e4" />
+
+### 6. Successful Task Deletion
+<img width="959" height="510" alt="task3-6" src="https://github.com/user-attachments/assets/87c2ecc5-079e-4796-bd0b-9215489fa9d7" />
+<img width="959" height="506" alt="task3-7" src="https://github.com/user-attachments/assets/c4d1722a-cf66-4b59-b0e0-28e331d47de8" />
+
