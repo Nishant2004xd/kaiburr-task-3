@@ -1,45 +1,42 @@
-# Kaiburr Assessment - Task 3: React WEB UI
+# Kaiburr Assessment: Task 3 React WEB UI
 
-This repository contains the frontend application for the Kaiburr assessment, built using **React**, **TypeScript**, and **Ant Design**. This web UI provides a full-featured interface to create, search, delete, and execute tasks by communicating with the Java REST API built in Task 1.
+The frontend of the Kaiburr assessment app is stored in this repository and is created with the help of **React**, **TypeScript**, and **Ant Design**. This web UI has a full-fledged interface to create, search, delete, and perform tasks by interacting with the Java REST API that is implemented in Task 1.
 
 ---
 
 ## Project Overview
 
-This application was bootstrapped using **Vite** with the **React + TypeScript** template. It uses **Axios** as the HTTP client to make all API requests to the backend.
+This app has been bootstrapped on **Vite** with **React + TypeScript** template. It is an HTTP client that utilizes the **Axios** to submit all API requests to the backend.
 
-The UI is built entirely with components from the **Ant Design** library, including `Layout`, `Table` (with expandable rows), `Modal` forms, `Buttons`, and `Collapse` panels to create a clean and functional user experience.
+The UI has been developed using the **Ant Design** library to its full extent comprising of **Layout**, **Table** (expandable rows), **Modal** forms and **Buttons** as well as **Collapse** panels to give it a clean and functional user experience.
 
-All application state, such as the list of tasks, is managed using React's `useState` hook. API calls are handled via `async/await` functions that update the state and provide user feedback (e.g., "Task created successfully!") using the Ant Design `message` component.
+**React** is used to manage all application data including the list of tasks with the **useState** hook. The API calls are implemented through the use of functions on the form of an **async/await** that updates the state and gives the user feedback (e.g., Task created successfully!), with the help of the **Ant Design message** component.
 
-### Key Features:
-* **Full CRUD:** The UI supports all required operations:
-    * **Create:** A modal form (`<Modal>` with `<Form>`) is used to create new tasks.
-    * **Read (All & Search):** The main table displays all tasks. A search modal filters tasks by name, and a "Show All Tasks" button resets the filter.
-    * **Delete:** A "Delete" button on each row removes the task from the database.
-* **Task Execution:** The "Execute" button runs the task on the backend.
-* **Execution History:** The table features expandable rows (`<Table expandable>`) that display the full execution history for each task, including the command output, start time, and end time.
+## Key Features:
 
-### Backend Connection & CORS
+* **CRUD:** The UI provides all the necessary functions:
+* **Create:** The creation of new tasks is done with the help of a modal form.
+* **Read (All and Search):** The primary table represents all the tasks. There is a search modal that can be used to filter tasks by their name and a Show All Tasks button acts to clear the filter.
+* **Edit:** There is a Delete button on each row, which deletes the task in the database.
+* **Task Execution:** The "Execute" button executes the task at the backend.
+* **Execution History:** The table contains expandable rows (`<Table expandable>`) showing the complete execution history of all tasks with the output of the command, the start and end time.
 
-The application is configured in `src/api.ts` to connect to the Task 1 Java backend at `http://localhost:8080`. For the frontend (running on `http://localhost:5173`) to communicate with the backend, a `WebConfig` file was added to the Java project to enable **CORS (Cross-Origin Resource Sharing)**.
+## Backend Connection & CORS
 
----
+Under `src/api.ts`, the application is set to connect to the Task 1 Java backend at the port of **http 8080**. To allow the frontend (running on **http://localhost:5173**) to communicate with the backend, a **WebConfig** file was included with the Java project to allow **CORS (Cross-Origin Resource Sharing)**.
 
 ## How to Run
 
-1.  **Run the Backend:** Start your **Task 1 (Java) application** first.
-2.  **Install Dependencies:** Open a terminal in this project's root folder (`kaiburr-task-3`) and run:
+1.  **Starting the Backend:** First start your Java application 1.
+2.  **Install Dependencies:** Run the following in a terminal in the root of this project (`kaiburr-task-3`):
     ```bash
     npm install
     ```
-3.  **Run the App:** In the same terminal, run:
+3.  **Execute the App:** In the terminal where you left it, execute:
     ```bash
     npm run dev
     ```
-4.  **Access:** Open your browser and navigate to `http://localhost:5173`.
-
----
+4.  **Access:** Open your browser and go to the following URL: `http://localhost:5173`.
 
 ## Application Screenshots
 
